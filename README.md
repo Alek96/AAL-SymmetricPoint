@@ -1,1 +1,1 @@
-# -ALL-symmetric-point
+# AAL-symmetricPoint
