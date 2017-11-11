@@ -1,24 +1,38 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
+#include <iostream>
+
 class Rectangle
 {
 public:
-	Rectangle(int xl=0, int xr=0, int yl=0, int yr=0, int numberOfSymmetricePoint=0);
+	Rectangle(int x1=0, int x2=0, int y1=0, int y2=0, int numberOfSymmetricePoint=0);
+
+	Rectangle(const Rectangle&) = default;
+	Rectangle(Rectangle&&) = default;
+	Rectangle& operator=(const Rectangle&) = default;
+	Rectangle& operator=(Rectangle&&) = default;
+	//virtual ~Rectangle() = default;
+
+    bool operator==(const Rectangle&) const;
+    bool operator!=(const Rectangle&) const;
 	bool operator<(const Rectangle&) const;
     bool operator>(const Rectangle&) const;
-    bool operator==(const Rectangle&) const;
+	bool operator<=(const Rectangle&) const;
+    bool operator>=(const Rectangle&) const;
 
-	int getLeftX() const;
-	int getRightX() const;
-	int getLeftY() const;
-	int getRightY() const;
-	int getPerimeter() const;
-	int getNumberOfSymmetricePoint() const;
+    friend std::ostream& operator<<(std::ostream&, const Rectangle&);
+
 	bool isEqual(const Rectangle&) const;
+	int getMinX() const;
+	int getMaxX() const;
+	int getMinY() const;
+	int getMaxY() const;
+	int getPerimeter() const;
+	int getOrginalPoints() const;
 private:
-	int xl, xr, yl, yr;
-	int numberOfSymmetricePoint;
+	int xMin, xMax, yMin, yMax;
+	int orginalPoints;
 };
 
 #endif

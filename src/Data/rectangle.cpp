@@ -1,25 +1,30 @@
 #include "rectangle.h"
 
-Rectangle::Rectangle(int xl, int xr, int yl, int yr, int numberOfSymmetricePoint)
-	: xl(xl <= xr ? xl : xr),
-	  xr(xl <= xr ? xr : xl),
-	  yl(yl <= yr ? yl : yr),
-	  yr(yl <= yr ? yr : yl),
-	  numberOfSymmetricePoint(numberOfSymmetricePoint < 0 ? 0 : numberOfSymmetricePoint)
+Rectangle::Rectangle(int x1, int x2, int y1, int y2, int orginalPoints)
+	: xMin(x1 <= x2 ? x1 : x2),
+	  xMax(x1 <= x2 ? x2 : x1),
+	  yMin(y1 <= y2 ? y1 : y2),
+	  yMax(y1 <= y2 ? y2 : y1),
+	  orginalPoints(orginalPoints < 0 ? 0 : orginalPoints)
 {}
 
 bool Rectangle::operator==(const Rectangle& rec) const
 {
-    return  getLeftX() == rec.getLeftX() &&
-            getRightX() == rec.getRightX() &&
-            getLeftY() == rec.getLeftY() &&
-            getRightY() == rec.getRightY() &&
-            getNumberOfSymmetricePoint() == rec.getNumberOfSymmetricePoint();
+    return  getMinX() == rec.getMinX() &&
+            getMaxX() == rec.getMaxX() &&
+            getMinY() == rec.getMinY() &&
+            getMaxY() == rec.getMaxY() &&
+            getOrginalPoints() == rec.getOrginalPoints();
 }
+bool Rectangle::operator!=(const Rectangle& rec) const
+{
+    return !(*this == rec);
+}
+
 bool Rectangle::operator<(const Rectangle& rec) const
 {
     if(getPerimeter() < rec.getPerimeter() ||
-	   getPerimeter() == rec.getPerimeter() && getNumberOfSymmetricePoint() < rec.getNumberOfSymmetricePoint()) {
+	   getPerimeter() == rec.getPerimeter() && getOrginalPoints() > rec.getOrginalPoints()) {
         return true;
     }else {
         return false;
@@ -27,39 +32,57 @@ bool Rectangle::operator<(const Rectangle& rec) const
 }
 bool Rectangle::operator>(const Rectangle& rec) const
 {
+    return !(*this <= rec);
+}
+bool Rectangle::operator<=(const Rectangle& rec) const
+{
+    if(getPerimeter() < rec.getPerimeter() ||
+	   getPerimeter() == rec.getPerimeter() && getOrginalPoints() >= rec.getOrginalPoints()) {
+        return true;
+    }else {
+        return false;
+    }
+}
+bool Rectangle::operator>=(const Rectangle& rec) const
+{
     return !(*this < rec);
 }
 
+std::ostream& operator<<(std::ostream& os,const Rectangle& rec)
+{
+    os << "[(" << rec.getMinX() << "," << rec.getMinY() << "),(" << rec.getMaxX() << "," << rec.getMaxY() << ")," << rec.getOrginalPoints() << "]";
+    return os;
+}
 
-int Rectangle::getLeftX() const
+int Rectangle::getMinX() const
 {
-	return xl;
+	return xMin;
 }
-int Rectangle::getRightX() const
+int Rectangle::getMaxX() const
 {
-	return xr;
+	return xMax;
 }
-int Rectangle::getLeftY() const
+int Rectangle::getMinY() const
 {
-	return yl;
+	return yMin;
 }
-int Rectangle::getRightY() const
+int Rectangle::getMaxY() const
 {
-	return yr;
+	return yMax;
 }
 
 int Rectangle::getPerimeter() const
 {
-	return (xr-xl + yr-yl)*2;
+	return (getMaxX()-getMinX() + getMaxY()-getMinY())*2;
 }
 
-int Rectangle::getNumberOfSymmetricePoint() const
+int Rectangle::getOrginalPoints() const
 {
-	return numberOfSymmetricePoint;
+	return orginalPoints;
 }
 
 bool Rectangle::isEqual(const Rectangle& rec) const
 {
 	return  getPerimeter() == rec.getPerimeter() &&
-            getNumberOfSymmetricePoint() == rec.getNumberOfSymmetricePoint();
+            getOrginalPoints() == rec.getOrginalPoints();
 }

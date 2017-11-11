@@ -2,36 +2,54 @@
 
 #include <iostream>
 
-Brut::Brut(RectangleData &data)
+Brut::Brut(const PointData data)
+    : data(data)
+{
+    (this->data).initializeData();
+}
+
+/*Brut::Brut(RectangleData &data)
     : data(data)
 {
     (this->data).initializeData();
     rec = (this->data).getRectangle();
-    //std::cout << "newTest:\n";
-    //std::cout << "(" << rec.getLeftX() << "," << rec.getLeftY() << "),(" << rec.getRightX() << "," << rec.getRightY() << ")\n";
+}*/
+
+void Brut::setData(PointData& newData)
+{
+    data = RectangleData(newData);
+    data.initializeData();
+}
+
+RectangleData Brut::getData() const
+{
+    return data;
 }
 
 Rectangle Brut::solve()
 {
+    rec = data.getRectangle();
     rek(0);
     return rec;
 }
 
 void Brut::rek(int x)
 {
+    Rectangle newRec;
 	if( x >= data.getSize() )
         return;
-
 	rek(x+1);
 
-    Rectangle newRec = data.getRectangle();
-
-	if(newRec < rec) {
+	newRec = data.getRectangle();
+	if(newRec < rec)
 		rec = newRec;
-        //std::cout << "(" << rec.getLeftX() << "," << rec.getLeftY() << "),(" << rec.getRightX() << "," << rec.getRightY() << ")\n";
-	}
 
 	data.changeSymmetrically(x);
+
+    newRec = data.getRectangle();
+	if(newRec < rec)
+		rec = newRec;
+
 	rek(x+1);
 }
 

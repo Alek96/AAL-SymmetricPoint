@@ -9,13 +9,14 @@ Import('env')
 libFiles = SConscript(Split('''
     Data/SConscript.py
     Algorithm/SConscript.py
+    Test/SConscript.py
 	'''))
 
 #Load and Compile main
 objFiles = env.Object('main.cpp')
 
 #Make new library
-#libFiles = env.Library('Project', libFiles)
+libFiles = env.Library('Project', libFiles)
 
 #Link program
 env.Program(target = '#bin/Project', source = objFiles + libFiles)

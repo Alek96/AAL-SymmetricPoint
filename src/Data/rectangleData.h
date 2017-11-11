@@ -3,31 +3,32 @@
 
 #include "pointData.h"
 #include "rectangle.h"
+
 #include <memory>
-
-/*
-Mysl techniczna:
-
-inteligentne wskazniki - nie potrzebne "delete []"
-std::shared_ptr<int> minX;
-zakaz dodania wiecej elementow niz n (stala?)
-tablice beda stalymi - raczek nie
-rzucac wyjatkami, na prawo i lewo
-*/
 
 class RectangleData
     : public PointData
 {
 public:
     RectangleData();
+    RectangleData(const PointData&);
+
+    RectangleData(const RectangleData&);
+	RectangleData(RectangleData&&);
+	RectangleData& operator=(const RectangleData&);
+	RectangleData& operator=(RectangleData&&);
     virtual ~RectangleData();
-    void changeSymmetrically(int n);
+
+    bool operator==(const RectangleData&) const;
+    bool operator!=(const RectangleData&) const;
+
+    void changeSymmetrically(int n); //move
     void initializeData();
-    int getMinX();
-    int getMaxX();
-    int getMinY();
-    int getMaxY();
-    Rectangle getRectangle();
+    int getMinX() const;
+    int getMaxX() const;
+    int getMinY() const;
+    int getMaxY() const;
+    Rectangle getRectangle() const;
 
 private:
     int arraySize;
@@ -36,8 +37,9 @@ private:
     int *minY;
     int *maxY;
 
-    int min(int a, int b);
-    int max(int a, int b);
+    int min(int a, int b) const;
+    int max(int a, int b) const;
+    void updata(int n);
 };
 
 #endif //RECTANGLEDATA_H
