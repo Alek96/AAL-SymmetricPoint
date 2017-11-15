@@ -21,9 +21,10 @@ public:
     Rectangle solve();
 private:
     PointData data;
-    //Rectangle rec;
+    Rectangle resultRec;
     void moveElementsToOneSide(bool XLessThatY);
     void moveMeaninglessElements(Rectangle rec);
+    void moveEdge(Rectangle rec, bool XLessThatY);
 };
 
 #endif

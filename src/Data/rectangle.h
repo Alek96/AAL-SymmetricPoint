@@ -6,7 +6,7 @@
 class Rectangle
 {
 public:
-	Rectangle(int x1=0, int x2=0, int y1=0, int y2=0, int numberOfSymmetricePoint=0);
+	Rectangle(int x1=0, int x2=0, int y1=0, int y2=0, int orginalPoints=0);
 
 	Rectangle(const Rectangle&) = default;
 	Rectangle(Rectangle&&) = default;

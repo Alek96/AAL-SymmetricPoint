@@ -30,11 +30,26 @@ SCENARIO("Generator algorithm Test")
                 }
             }
 		}
+		WHEN("Set identical seed") {
+            gen.setSeed(10); auto data1 = gen.generateTest();
+            gen.setSeed(10); auto data2 = gen.generateTest();
+            THEN("Generate the same obj") {
+                REQUIRE( data1 == data1 );
+            }
+        }
+        WHEN("Set different seed") {
+            gen.setSeed(10); auto data1 = gen.generateTest();
+            gen.setSeed(11); auto data2 = gen.generateTest();
+            THEN("Generate the same obj") {
+                REQUIRE( data1 == data1 );
+            }
+        }
     }
     GIVEN("Two object with some parametrs")
 	{
         Generator gen1(10, 20);
         Generator gen2(10, 20);
+
         THEN("First obj == second obj") {
             REQUIRE( gen1 == gen2 );
             REQUIRE_FALSE( gen1 != gen2 );

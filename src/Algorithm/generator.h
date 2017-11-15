@@ -20,6 +20,7 @@ public:
     int getNumberOfPoints() const;
     void setRangeOfNumbers(int n);
     int getRangeOfNumbers() const;
+    void setSeed(unsigned int = 0);
     PointData generateTest();
 private:
     int numberOfPoints;
