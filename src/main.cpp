@@ -11,7 +11,7 @@
 #include "3rd-party/cxxopts.hpp"
 #include <vector>
 
-#define COUNT_C
+#define NOCOUNT_C
 
 int main(int argc, char* argv[])
 {
