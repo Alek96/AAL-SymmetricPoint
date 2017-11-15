@@ -9,11 +9,15 @@
 #include "Algorithm/generator.h"
 #include "Test/test.h"
 #include "3rd-party/cxxopts.hpp"
+#include <vector>
+
+#define COUNT_C
 
 int main(int argc, char* argv[])
 {
     int points=0,range=0,tests=0,increment=0,step=0;
     bool verify=false, output=false, time=false;
+    double c=0.0017, cc=0;
 
     try
     {
@@ -72,15 +76,29 @@ int main(int argc, char* argv[])
         test.run();
         std::cout << test.getLastResult() << "\n";
     } else {
+        if(time)
+            std::cout << "  Agorithm with asymptot O(T(n))" << std::endl
+                      << "n\t\tt(n)[ms]\tq(n)" << std::endl;
+
         for(int i=0; i<step; ++i) {
             test.setGenerator(Generator(points,range));
             for(int j=0; j<tests; ++j) {
                 test.readFromGenerator();
                 test.run();
             }
-            if(time)
-                std::cout << "Arithmetic average of times for " << points
-                          << " is " << test.getOutput().getArithmeticAverageTime() << "s" << std::endl;
+            if(time) {
+                #ifdef COUNT_C
+                cc+= test.getOutput().getArithmeticAverageTime() / points;
+                #endif // COUNT_C
+
+                std::cout << points << "\t\t"
+                          << test.getOutput().getArithmeticAverageTime() << "\t\t"
+                          << test.getOutput().getArithmeticAverageTime() / (c * points)
+                          #ifdef COUNT_C
+                          << "   \t" << cc / (i+1)
+                          #endif // COUNT_C
+                          << std::endl;
+            }
             points+= increment;
             test.reset();
         }

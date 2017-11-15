@@ -72,7 +72,6 @@ void Test::run()
         lastRec = algo->solve();
         auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - start);
         time = milliseconds.count();
-        time/=1000;
     } else
         lastRec = algo->solve();
 
