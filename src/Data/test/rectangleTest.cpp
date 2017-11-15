@@ -1,8 +1,6 @@
 #include "3rd-party/catch.hpp"
 #include "../rectangle.h"
 
-#include <iostream>
-
 SCENARIO("Rectangle test")
 {
 	GIVEN("A object")

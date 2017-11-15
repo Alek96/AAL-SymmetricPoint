@@ -1,7 +1,6 @@
 #include "generator.h"
 
 #include <cstdlib>
-#include <iostream>
 
 Generator::Generator(int numberOfPoints, int rangeOfNumbers)
     : numberOfPoints(numberOfPoints), rangeOfNumbers(rangeOfNumbers)

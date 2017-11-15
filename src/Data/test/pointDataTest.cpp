@@ -1,8 +1,6 @@
 #include "3rd-party/catch.hpp"
 #include "../pointData.h"
 
-#include <iostream>
-
 SCENARIO("PointData test")
 {
 	GIVEN("A object with some items")

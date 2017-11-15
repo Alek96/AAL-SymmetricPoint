@@ -1,19 +1,10 @@
 #include "brut.h"
 
-#include <iostream>
-
 Brut::Brut(const PointData data)
     : data(data)
 {
     (this->data).initializeData();
 }
-
-/*Brut::Brut(RectangleData &data)
-    : data(data)
-{
-    (this->data).initializeData();
-    rec = (this->data).getRectangle();
-}*/
 
 void Brut::setData(PointData& newData)
 {
@@ -52,4 +43,3 @@ void Brut::rek(int x)
 
 	rek(x+1);
 }
-

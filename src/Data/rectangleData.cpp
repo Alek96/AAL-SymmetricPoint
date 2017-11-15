@@ -108,25 +108,6 @@ void RectangleData::initializeData()
 
     for(int i = 0; i < getSize(); ++i )
         updata(i);
-
-    /*auto decideF = [](RectangleData *it, int a){
-        return a < it->getSize() ? it->getPoint( a ).first : std::numeric_limits<int>::max(); };
-    auto decideS = [](RectangleData *it, int a){
-        return a < it->getSize() ? it->getPoint( a ).second : std::numeric_limits<int>::max(); };
-
-    for(int i = arraySize-1; i > 0; --i ) {
-        if( i >= arraySize/2 ) {
-            minX[i] = min( decideF(this, 2*i - arraySize), decideF(this, 2*i+1 - arraySize) );
-            maxX[i] = max( decideF(this, 2*i - arraySize), decideF(this, 2*i+1 - arraySize) );
-            minY[i] = min( decideS(this, 2*i - arraySize), decideS(this, 2*i+1 - arraySize) );
-            maxY[i] = max( decideS(this, 2*i - arraySize), decideS(this, 2*i+1 - arraySize) );
-        }else {
-            minX[i] = min(minX[2*i],minX[2*i+1]);
-            maxX[i] = max(maxX[2*i],maxX[2*i+1]);
-            minY[i] = min(minY[2*i],minY[2*i+1]);
-            maxY[i] = max(maxY[2*i],maxY[2*i+1]);
-        }
-    }*/
 }
 
 

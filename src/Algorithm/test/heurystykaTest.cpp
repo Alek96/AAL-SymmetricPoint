@@ -1,8 +1,6 @@
 #include "3rd-party/catch.hpp"
 #include "../heurystyka.h"
 
-#include <iostream>
-
 SCENARIO("Test for Heurystyka algorithm", "[Algorithm]")
 {
 	GIVEN("A Heurystyka object")

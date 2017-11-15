@@ -1,8 +1,6 @@
 #include "heurystyka.h"
 
 #include <algorithm>
-#include <iostream>
-
 #include <vector>
 
 Heurystyka::Heurystyka(PointData data)

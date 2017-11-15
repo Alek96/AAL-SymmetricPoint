@@ -3,8 +3,6 @@
 
 #include "src/Data/pointData.h"
 
-#include <iostream>
-
 SCENARIO("Brut algorithm test")
 {
 	GIVEN("A RectangleData object")

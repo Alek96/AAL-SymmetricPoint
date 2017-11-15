@@ -1,8 +1,6 @@
 #include "3rd-party/catch.hpp"
 #include "../generator.h"
 
-#include <iostream>
-
 SCENARIO("Generator algorithm Test")
 {
 	GIVEN("A object")

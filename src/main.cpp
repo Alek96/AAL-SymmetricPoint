@@ -1,15 +1,12 @@
-#include <iostream>
-#include <string>
-
+#include "3rd-party/cxxopts.hpp"
 #include "Data/rectangle.h"
-#include "Data/pointData.h"
-#include "Data/rectangleData.h"
 #include "Algorithm/heurystyka.h"
 #include "Algorithm/brut.h"
 #include "Algorithm/generator.h"
 #include "Test/test.h"
-#include "3rd-party/cxxopts.hpp"
-#include <vector>
+
+#include <iostream>
+#include <string>
 
 #define NOCOUNT_C
 
@@ -17,7 +14,10 @@ int main(int argc, char* argv[])
 {
     int points=0,range=0,tests=0,increment=0,step=0;
     bool verify=false, output=false, time=false;
-    double c=0.0017, cc=0;
+    double c=0.0018;
+    #ifdef COUNT_C
+        double cc=0;
+    #endif // COUNT_C
 
     try
     {
@@ -55,8 +55,6 @@ int main(int argc, char* argv[])
         std::cout << "error parsing options: " << e.what() << std::endl;
         return 1;
     }
-    //std::cout << points << " " << range << " " << tests << " " << increment << " " << step << "\n";
-    //std::cout << verify << " " << output << " " << time << "\n";
 
     Test test;
     test.setAlgorithm(std::make_shared<Heurystyka>());
@@ -77,8 +75,8 @@ int main(int argc, char* argv[])
         std::cout << test.getLastResult() << "\n";
     } else {
         if(time)
-            std::cout << "  Agorithm with asymptot O(T(n))" << std::endl
-                      << "n\t\tt(n)[ms]\tq(n)" << std::endl;
+            std::cout << "  Agorithm with asymptote O(T(n))" << std::endl
+                      << "n\t\tt(n)[ms]\tc" << std::endl;
 
         for(int i=0; i<step; ++i) {
             test.setGenerator(Generator(points,range));
@@ -88,14 +86,14 @@ int main(int argc, char* argv[])
             }
             if(time) {
                 #ifdef COUNT_C
-                cc+= test.getOutput().getArithmeticAverageTime() / points;
+                    cc+= test.getOutput().getArithmeticAverageTime() / points;
                 #endif // COUNT_C
 
                 std::cout << points << "\t\t"
                           << test.getOutput().getArithmeticAverageTime() << "\t\t"
                           << test.getOutput().getArithmeticAverageTime() / (c * points)
                           #ifdef COUNT_C
-                          << "   \t" << cc / (i+1)
+                            << "   \t" << cc / (i+1)
                           #endif // COUNT_C
                           << std::endl;
             }

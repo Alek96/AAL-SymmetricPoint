@@ -14,7 +14,7 @@ Projekt wykorzystuje do budowanie bibliotekę SCons, do testów jednostkowych bi
 
 ## Budowanie (SCons)  
 Do zbudowania aplikacji wystarczy wpisać w konsolę `scons` w katalogu głównym.  
-Do zobaczenie większej liczby dostępnych opcji trzeba wpisać `scons -h`.  
+Aby zobaczyć większą liczbę dostępnych opcji należy wpisać `scons -h`.  
 Możliwość budowania na systemach Windows, Linux (możliwe że też na innych, ale nie było to testowane).  
 
 Wersja SCons użytego w tym projekcie: 2.5.1   
@@ -40,10 +40,10 @@ Program powinien wyświetlić odpowiedz:
 ```
 która jest współrzędnymi prostokąta, kolejno lewego dolnego, oraz prawego górnego rógu, oraz liczbę orginalnych punktów (nie odbitych symetrycznie względem  prostej y=x) znajdujących się w tym prostokącie.  
 
-### Tryb z użycie flag  
+### Tryb z użyciem flag  
 Program można uruchomić używając flag, wszystkie flagi dostępne są po wpisaniu `-h` lub odpowiednio `--help`.  
 
-Gdy zdecydujemy się na uruchomienie programu z użycie flag, dane wejściowe będą generowane automatycznie - nie będzie ich trzeba wprowadzać ręcznie.  
+Gdy zdecydujemy się na uruchomienie programu z użyciem flag, dane wejściowe będą generowane automatycznie - nie będzie ich trzeba wprowadzać ręcznie.  
 
 Flaga `-v, --verify` umożliwia sprawdzanie poprawności odpowiedzi.  
 ```

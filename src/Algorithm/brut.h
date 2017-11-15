@@ -12,7 +12,6 @@ class Brut
 {
 public:
     Brut(const PointData data = PointData());
-    //Brut(RectangleData &data);
 
     Brut(const Brut&) = default;
 	Brut(Brut&&) = default;

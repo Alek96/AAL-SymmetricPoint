@@ -8,6 +8,11 @@ class OutputTest
 {
 public:
     OutputTest();
+    OutputTest(const OutputTest&) = default;
+	OutputTest(OutputTest&&) = default;
+	OutputTest& operator=(const OutputTest&) = default;
+	OutputTest& operator=(OutputTest&&) = default;
+
     friend std::ostream& operator<<(std::ostream&, const OutputTest&);
 
     void addResult(double time, bool correct=false);
