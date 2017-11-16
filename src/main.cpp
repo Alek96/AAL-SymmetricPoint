@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
     } else {
         if(time)
             std::cout << "  Agorithm with asymptote O(T(n))" << std::endl
-                      << "n\t\tt(n)[ms]\tc" << std::endl;
+                      << "n\t\tt(n)[ms]\tq(n)" << std::endl;
 
         for(int i=0; i<step; ++i) {
             test.setGenerator(Generator(points,range));
